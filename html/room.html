@@ -1,0 +1,238 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/logo.png">
+    <title>FeelsLikeHome</title>
+    <style>
+        .modal {
+            width: 44% !important;
+            height: 60% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper cyan darken-1">
+                <div class="container">
+                    <a href="#" class="brand-logo">
+                        <img src="../img/logo.png" alt="" class="responsive-img">
+                        FeelsLikeHome
+                    </a>
+                    <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li class="logged-in">
+                            <a href="#" class="modal-trigger" data-target="modal-account">Account</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#" class="" id="logout">Logout</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#" class="modal-trigger" data-target="modal-create">Host</a>
+                        </li>
+                        <li class="logged-out">
+                            <a href="#" class="modal-trigger" data-target="modal-login">Login</a>
+                        </li>
+                        <li class="logged-out">
+                            <a href="#" class="modal-trigger" data-target="modal-signup">Sign up</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+    <!-- NAVBAR FOR MOBILE -->
+    <ul class="sidenav" id="mobile-links">
+        <li class="logged-in">
+            <a href="#" class="modal-trigger" data-target="modal-account">Account</a>
+        </li>
+        <li class="logged-in">
+            <a href="#" class="modal-trigger" id="logout">Logout</a>
+        </li>
+        <li class="logged-in">
+            <a href="#" class="modal-trigger" data-target="modal-create">Host</a>
+        </li>
+        <li class="logged-out">
+            <a href="#" class="modal-trigger" data-target="modal-login">Login</a>
+        </li>
+        <li class="logged-out">
+            <a href="#" class="modal-trigger" data-target="modal-signup">Sign up</a>
+        </li>
+    </ul>
+    <!---->
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+            <h4>Create a new account</h4><br />
+            <div class="row">
+                <form class="col s12" id="signup-form" autocomplete="off">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="Gordon" id="signup-first-name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Ramsey" id="signup-last-name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="signup-email" type="email" class="validate" required>
+                            <label for="signup-email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="signup-password" type="password" class="validate" required>
+                            <label for="signup-password">Password</label>
+                        </div>
+                    </div>
+                    <button class="btn teal accent-3 depth-2">Sign up</button>
+                    <div class="row">
+                        <p class="col s12 red-text" id="password-validation"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <h4>Login</h4><br />
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <button class="btn teal accent-3 depth-2">Login</button>
+                <div class="row">
+                    <p class="col s12 red-text" id="login-problem"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+            <h4>Account details</h4><br />
+            <!-- <div class="account-details"></div> -->
+        </div>
+    </div>
+
+    <!-- CREATE ROOM MODAL -->
+    <div id="modal-create" class="modal">
+        <div class="modal-content">
+            <h4>Room Guide</h4><br />
+            <!-- <form id="create-form">
+                <div class="input-field">
+                    <input type="text" id="title" required>
+                    <label for="title">Room Title</label>
+                </div>
+                <div class="input-field">
+                    <textarea id="location" class="materialize-textarea" required></textarea>
+                    <label for="location">Room's Location</label>
+                </div>
+                <div class="input-field">
+                    <textarea id="capacity" class="materialize-textarea" required></textarea>
+                    <label for="capacity">Room's Capacity</label>
+                </div>
+                <div class="input-field">
+                    <textarea type="number" id="price" class="materialize-textarea" required></textarea>
+                    <label for="price">Room's price (VND/day)</label>
+                </div>
+
+                <button class="btn yellow darken-2 z-depth-0">Create</button>
+            </form> -->
+        </div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div class="container">
+        
+    </div>
+
+
+
+
+
+
+
+    <!-- FOOTER -->
+    <footer class="page-footer cyan darken-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text"><img src="../img/logo.png" alt="" class="responsive-img">FeelsLikeHome</h5>
+                    <p class="grey-text text-lighten-4">Made with Firebase and Materialize, available on Github</p>
+                    <p>
+                        <a href="https://materializecss.com/"><img src="../img/logo materialize icon.png"
+                                class="responsive-img"></a>
+                        <a href="https://firebase.google.com/"><img src="../img/logo firebase icon.png"
+                                class="responsive-img"></a>
+                        <a href="https://github.com/hba-org/JSI_Project"><img src="../img/logo github icon.png"
+                                class="responsive-img"></a>
+                    </p>
+                    <div class="brand-logo"></div>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Contact Us</h5>
+                    <ul>
+                        <li>
+                            <p><i class="material-icons left"> phone </i>: 0888395099
+                            </p>
+                        </li>
+                        <li>
+                            <p><i class="material-icons left"> email </i> : hoangbaoan1901@gmail.com
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                @FeelsLikeHome 2021
+                <a class="grey-text text-lighten-4 right" href="#!">No license at all, we're broke af :(</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>

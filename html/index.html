@@ -1,0 +1,468 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/logo.png">
+    <title>FeelsLikeHome</title>
+    <style>
+        .modal {
+            width: 50% !important;
+            height: 50% !important;
+        }
+
+        .parallax-container {
+            height: 18% !important;
+        }
+
+        .carousel .carousel-item {
+            width: 300px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper teal accent-4">
+                <div class="container">
+                    <a href="#" class="brand-logo">
+                        <span class="material-icons">
+                            place
+                        </span>
+                        FeelsLikeHome
+                    </a>
+                    <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <form>
+                                <div class="input-field">
+                                    <input id="search" type="search" required>
+                                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                    <i class="material-icons">close</i>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#" class="modal-trigger" data-target="modal-account" id="account-info">Account</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#" class="" id="logout">Logout</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#" class="modal-trigger" data-target="modal-create">Host</a>
+                        </li>
+                        <li class="logged-out">
+                            <a href="#" class="modal-trigger" data-target="modal-login">Login</a>
+                        </li>
+                        <li class="logged-out">
+                            <a href="#" class="modal-trigger" data-target="modal-signup">Sign up</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+    
+    <!-- NAVBAR FOR MOBILE -->
+    <ul class="sidenav" id="mobile-links">
+        <li>
+            <div class="container s10">
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </div>
+        </li>
+        <li class="logged-in">
+            <a href="#" class="modal-trigger" data-target="modal-account" id="account-info">Account</a>
+        </li>
+        <li class="logged-in">
+            <a href="#" class="modal-trigger" id="logout">Logout</a>
+        </li>
+        <li class="logged-in">
+            <a href="#" class="modal-trigger" data-target="modal-create">Host</a>
+        </li>
+        <li class="logged-out">
+            <a href="#" class="modal-trigger" data-target="modal-login">Login</a>
+        </li>
+        <li class="logged-out">
+            <a href="#" class="modal-trigger" data-target="modal-signup">Sign up</a>
+        </li>
+    </ul>
+    <!---->
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+            <h4>Create a new account</h4><br />
+            <div class="row">
+                <form class="col s12" id="signup-form" autocomplete="off">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="Gordon" id="signup-first-name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Ramsey" id="signup-last-name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="signup-email" type="email" class="validate" required>
+                            <label for="signup-email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="signup-password" type="password" class="validate" required>
+                            <label for="signup-password">Password</label>
+                        </div>
+                    </div>
+                    <button class="btn teal accent-3 depth-2">Sign up</button>
+                    <div class="row">
+                        <p class="col s12 red-text" id="password-validation"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal" style="width:40%!important; height:50%!important">
+        <div class="modal-content">
+            <h4>Login</h4><br />
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <button class="btn teal accent-3 depth-2">Login</button>
+                <div class="row">
+                    <p class="col s12 red-text" id="login-problem"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+            <h4>Account details</h4><br />
+            <!-- <div class="account-details"></div> -->
+        </div>
+    </div>
+
+    <!-- CREATE ROOM MODAL -->
+    <div id="modal-create" class="modal" style="width:50%!important; height:60%!important">
+        <div class="modal-content">
+            <h4>Hosting</h4><br />
+            <form id="create-form">
+                <div class="input-field">
+                    <input type="text" id="title" required>
+                    <label for="title">Title</label>
+                </div>
+                <!-- <div class="input-field">
+                    <textarea id="location" class="materialize-textarea" required></textarea>
+                    <label for="location">Room's Location</label>
+                </div> -->
+                <div class="input-field">
+                    <select id="district">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label for="district">Materialize Select</label>
+                </div>
+
+                <div class="input-field">
+                    <textarea type="number" id="price" class="materialize-textarea" required></textarea>
+                    <label for="price">Room's price (VND/day)</label>
+                </div>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file" multiple id="image_upload" required accept="image/*">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Image of the room">
+                    </div>
+                </div>
+
+                <button class="btn teal accent-3 z-depth-0">Create</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- HOME PAGE -->
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="../img/hanoi_image.jpg"></div>
+    </div>
+    <div class="section white">
+        <div class="row container col s12">
+            <h2 class="header">Chào mừng đến với FeelsLikeHome</h2>
+            <h4 class="grey-text text-darken-3 lighten-3">Đặt phòng là dễ cùng với FeelsLikeHome</h4>
+            <div class="slider">
+                <ul class="slides">
+                    <li>
+                        <img src="../img/mount_image.jpg">
+                        <div class="caption center-align">
+                            <h3>This is FeelsLikeHome</h3>
+                            <h5 class="light white-text text-lighten-3">Enjoy your time on the trip without worrying
+                                about where to stay at night!</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../img/mount_image2.jpg">
+                        <div class="caption right-align">
+                            <h3>Left Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../img/nhatrang_image.jpg">
+                        <div class="caption left-align">
+                            <h3>Right Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../img/tmrl_image.jpg">
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="../img/hanoi_image.jpg"></div>
+    </div>
+
+    <div class="section teal accent-1">
+        <div class="row container col s12">
+            <h3>Place Availabe in Hanoi</h3>
+            <div class="carousel" id="place-available">
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="../img/carousel_test_img2.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">more_vert</i></span>
+                            <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">close</i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="../img/carousel_test_img2.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">more_vert</i></span>
+                            <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">close</i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="../img/carousel_test_img2.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">more_vert</i></span>
+                            <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">close</i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="../img/carousel_test_img2.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">more_vert</i></span>
+                            <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">close</i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="../img/carousel_test_img2.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">more_vert</i></span>
+                            <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i
+                                    class="material-icons right">close</i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="../img/hanoi_image.jpg"></div>
+    </div>
+
+    <div class="section white">
+        <div class="container" style="margin-top: 40px;">
+            <ul class="collapsible z-depth-0" style="border: none;" id="roomList">
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="../img/hanoi_image.jpg"></div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="page-footer teal accent-3 black-text">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5> <span class="material-icons">
+                            place
+                        </span>FeelsLikeHome</h5>
+                    <p>Made with Firebase and Materialize, available on Github</p>
+                    <p>
+                        <a href="https://materializecss.com/"><img src="../img/logo materialize icon.png"
+                                class="responsive-img"></a>
+                        <a href="https://firebase.google.com/"><img src="../img/logo firebase icon.png"
+                                class="responsive-img"></a>
+                        <a href="https://github.com/hba-org/JSI_Project"><img src="../img/logo github icon.png"
+                                class="responsive-img"></a>
+                    </p>
+                    <div class="brand-logo"></div>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="black-text">Contact Us</h5>
+                    <ul>
+                        <li>
+                            <p><i class="material-icons left"> phone </i>: 0888395099
+                            </p>
+                        </li>
+                        <li>
+                            <p><i class="material-icons left"> email </i> : hoangbaoan1901@gmail.com
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                @FeelsLikeHome 2021
+                <a class="grey-text text-lighten-4 right" href="#!">No license at all, we're broke af :(</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyAPFZ-pl8JmndkPEpNxSp3wJgAFNJibWf4",
+            authDomain: "jsi-project-6a56f.firebaseapp.com",
+            projectId: "jsi-project-6a56f",
+            storageBucket: "jsi-project-6a56f.appspot.com",
+            messagingSenderId: "595033908860",
+            appId: "1:595033908860:web:dbb15349a82de5d63e8bf9",
+            measurementId: "G-M5GCVX50BZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        //make firebase features references
+        const auth = firebase.auth()
+        const db = firebase.firestore()
+    </script>
+    <script src="../js/index.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/materialize_init.js"></script>
+    <script src="../js/hanoi.js"></script>
+</body>
+
+</html>
