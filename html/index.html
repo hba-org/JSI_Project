@@ -68,6 +68,7 @@
             </div>
         </nav>
     </div>
+    
     <!-- NAVBAR FOR MOBILE -->
     <ul class="sidenav" id="mobile-links">
         <li>
@@ -170,16 +171,26 @@
     <!-- CREATE ROOM MODAL -->
     <div id="modal-create" class="modal" style="width:50%!important; height:60%!important">
         <div class="modal-content">
-            <h4>Room Guide</h4><br />
+            <h4>Hosting</h4><br />
             <form id="create-form">
                 <div class="input-field">
                     <input type="text" id="title" required>
-                    <label for="title">Room Title</label>
+                    <label for="title">Title</label>
                 </div>
-                <div class="input-field">
+                <!-- <div class="input-field">
                     <textarea id="location" class="materialize-textarea" required></textarea>
                     <label for="location">Room's Location</label>
+                </div> -->
+                <div class="input-field">
+                    <select id="district">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label for="district">Materialize Select</label>
                 </div>
+
                 <div class="input-field">
                     <textarea type="number" id="price" class="materialize-textarea" required></textarea>
                     <label for="price">Room's price (VND/day)</label>
@@ -451,6 +462,7 @@
     <script src="../js/index.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/materialize_init.js"></script>
+    <script src="../js/hanoi.js"></script>
 </body>
 
 </html>

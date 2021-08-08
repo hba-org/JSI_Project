@@ -36,6 +36,7 @@ auth.onAuthStateChanged((user) => {
     }
     else {
         setupUI()
+        console.log('user logged out')
     }
 })
 
