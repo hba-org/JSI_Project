@@ -1,3 +1,44 @@
+//Create new room
+const createForm = document.querySelector('#create-form')
+createForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const owner = auth.currentUser.email
+    const title = createForm['title']
+    const price = createForm['price']
+    const location = createForm['location']
+    db.collection('rooms').add({
+        owner: owner,
+        title: title.value,
+        price: price.value,
+        location: location.value,
+    }).then(() => {
+        const modal = document.getElementById('modal-create')
+        M.Modal.getInstance(modal).close()
+        createForm.reset()
+    })
+})
+
+
+
+//get data
+db.collection('rooms').onSnapshot((snapshot) => {
+    setupRooms(snapshot.docs)
+})
+
+
+//  Listen for auth changes
+auth.onAuthStateChanged((user) => {
+    // console.log(user)
+    if (user != null) {
+        console.log('user logged in')
+        console.log(user.email)
+        setupUI(user)
+    }
+    else {
+        setupUI()
+    }
+})
+
 //  Sign Up
 const signupForm = document.querySelector('#signup-form')
 
@@ -12,7 +53,7 @@ signupForm.addEventListener('submit', (e) => {
     const lastName = signupForm['signup-last-name']
 
     if (password.value.length < 6) {
-        passwordValidation.innerHTML = "⚠ Password must have at least 6 characters"
+        passwordValidation.innerHTML = "⚠ Password should be at least 6 characters"
     }
     else {
         passwordValidation.innerHTML = ""
@@ -25,7 +66,13 @@ signupForm.addEventListener('submit', (e) => {
                 let userLastName = lastName.value
                 console.log(email)
                 console.log(userFirstName, userLastName)
-
+                return db.collection('users').doc(user.uid).set({
+                    firstName: userFirstName,
+                    lastName: userLastName,
+                    email: email
+                })
+            })
+            .then(() => {
                 const modal = document.getElementById('modal-signup')
                 M.Modal.getInstance(modal).close()
                 signupForm.reset()
@@ -41,17 +88,21 @@ signupForm.addEventListener('submit', (e) => {
 
 
 //  Log out
-const logout = document.getElementById('logout')
-logout.addEventListener('click', (e) => {
-    e.preventDefault()
-    auth.signOut().then(()=>{
-        console.log("User signed out")
+const logout = document.querySelectorAll('#logout')
+logout.forEach(logoutButton => {
+    logoutButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        auth.signOut().then(() => {
+
+        })
+            .catch((error) => {
+                console.log(error.code)
+                console.log(error.message)
+            })
     })
-    .catch((error) =>{
-        console.log(error.code)
-        console.log(error.message)
-    })
+
 })
+
 
 //  Log in
 const loginForm = document.querySelector('#login-form')
@@ -62,20 +113,20 @@ loginForm.addEventListener('submit', (e) => {
     const loginProblem = document.getElementById('login-problem')
 
     auth.signInWithEmailAndPassword(email.value, password.value)
-    .then((userCredential) => {
-        //setupUI
+        .then((userCredential) => {
+            //setupUI
 
-        //close modal and reset form
-        const modal = document.querySelector('#modal-login')
-        M.Modal.getInstance(modal).close()
-        loginForm.reset()
-    })
-    .catch((error) => {
-        var errorCode = error.code
-        var errorMessage = error.message
-        loginProblem.innerHTML = "Wrong password or email maybe?"
-        // ..
-        console.log(errorCode)
-        console.log(errorMessage)
-    });
+            //close modal and reset form
+            const modal = document.querySelector('#modal-login')
+            M.Modal.getInstance(modal).close()
+            loginForm.reset()
+        })
+        .catch((error) => {
+            var errorCode = error.code
+            var errorMessage = error.message
+            loginProblem.innerHTML = "Wrong password or email maybe?"
+            // ..
+            console.log(errorCode)
+            console.log(errorMessage)
+        });
 })
