@@ -38,15 +38,6 @@
                         <i class="material-icons">menu</i>
                     </a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>
-                            <form>
-                                <div class="input-field">
-                                    <input id="search" type="search" required>
-                                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                    <i class="material-icons">close</i>
-                                </div>
-                            </form>
-                        </li>
                         <li class="logged-in">
                             <a href="#" class="modal-trigger" data-target="modal-account" id="account-info">Account</a>
                         </li>
@@ -68,20 +59,9 @@
             </div>
         </nav>
     </div>
-    
+
     <!-- NAVBAR FOR MOBILE -->
     <ul class="sidenav" id="mobile-links">
-        <li>
-            <div class="container s10">
-                <form>
-                    <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                </form>
-            </div>
-        </li>
         <li class="logged-in">
             <a href="#" class="modal-trigger" data-target="modal-account" id="account-info">Account</a>
         </li>
@@ -169,7 +149,7 @@
     </div>
 
     <!-- CREATE ROOM MODAL -->
-    <div id="modal-create" class="modal" style="width:50%!important; height:60%!important">
+    <div id="modal-create" class="modal" style="width:50%!important; height:80%!important">
         <div class="modal-content">
             <h4>Hosting</h4><br />
             <form id="create-form">
@@ -183,12 +163,73 @@
                 </div> -->
                 <div class="input-field">
                     <select id="district">
-                      <option value="" disabled selected>Choose your option</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                        <option value="0">Quận Ba Đình</option>
+                        <option value="1">Quận Hoàn Kiếm</option>
+                        <option value="2">Quận Tây Hồ</option>
+                        <option value="3">Quận Long Biên</option>
+                        <option value="4">Quận Cầu Giấy</option>
+                        <option value="5">Quận Đống Đa</option>
+                        <option value="6">Quận Hai Bà Trưng</option>
+                        <option value="7">Quận Hoàng Mai</option>
+                        <option value="8">Quận Thanh Xuân</option>
+                        <option value="9">Huyện Sóc Sơn</option>
+                        <option value="10">Huyện Đông Anh</option>
+                        <option value="11">Huyện Gia Lâm</option>
+                        <option value="12">Quận Nam Từ Liêm</option>
+                        <option value="13">Huyện Thanh Trì</option>
+                        <option value="14">Quận Bắc Từ Liêm</option>
+                        <option value="15">Huyện Mê Linh</option>
+                        <option value="16">Quận Hà Đông</option>
+                        <option value="17">Thị xã Sơn Tây</option>
+                        <option value="18">Huyện Ba Vì</option>
+                        <option value="19">Huyện Phúc Thọ</option>
+                        <option value="20">Huyện Đan Phượng</option>
+                        <option value="21">Huyện Hoài Đức</option>
+                        <option value="22">Huyện Quốc Oai</option>
+                        <option value="23">Huyện Thạch Thất</option>
+                        <option value="24">Huyện Chương Mỹ</option>
+                        <option value="25">Huyện Thanh Oai</option>
+                        <option value="26">Huyện Thường Tín</option>
+                        <option value="27">Huyện Phú Xuyên</option>
+                        <option value="28">Huyện Ứng Hòa</option>
+                        <option value="29">Huyện Mỹ Đức</option>
                     </select>
-                    <label for="district">Materialize Select</label>
+                    <label for="district">Location</label>
+                </div>
+
+                <div class="input-field">
+                    <select multiple id="facilities">
+                        <optgroup label="Facilities">
+                            <option value="1" data-icon="../img/outline_ac_unit_black_48dp.png">Air-conditioning</option>
+                            <option value="2" data-icon="../img/outline_bathroom_black_48dp.png">Bathroom</option>
+                            <option value="3" data-icon="../img/outline_shower_black_48dp.png">Shower</option>  
+                            <option value="4" data-icon="../img/outline_hot_tub_black_48dp.png">Bathtub</option>
+                            <option value="5" data-icon="../img/outline_checkroom_black_48dp.png">Checkroom</option>
+                            <option value="6" data-icon="../img/outline_dry_cleaning_black_48dp.png">Dry cleaning</option>
+                            <option value="7" data-icon="../img/outline_wifi_black_48dp.png">Wi-fi</option>
+                            <option value="8" data-icon="../img/outline_electrical_services_black_48dp.png">Electrical Services</option>
+                        </optgroup>
+                        <optgroup label="Kitchen Facilities">
+                            <option value="9" data-icon="../img/outline_microwave_black_48dp.png">Microwave</option>
+                            <option value="10" data-icon="../img/outline_kitchen_black_48dp.png">Fridge</option>
+                            <option value="11" data-icon="../img/outline_outdoor_grill_black_48dp.png">Stove</option>
+                            <option value="12" data-icon="../img/outline_coffee_maker_black_48dp.png">Coffee Maker</option>
+                        </optgroup>
+                    </select>
+                    <label for="facilities">Facilities</label>
+                </div>
+
+                <div class="input-field">
+                    <select id="bed">
+                        <option value="1" data-icon="../img/outline_bedroom_child_black_48dp.png">Single bed</option>
+                        <option value="2" data-icon="../img/outline_bedroom_parent_black_48dp.png">Double bed</option>
+                    </select>
+                    <label for="bed">Bed</label>
+                </div>
+
+                <div class="input-field">
+                    <textarea type="text" id="specific-location" class="materialize-textarea" required></textarea>
+                    <label for="specific-location">Specific location</label>
                 </div>
 
                 <div class="input-field">
@@ -427,7 +468,6 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -438,6 +478,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
 
     <script>
         // Your web app's Firebase configuration
@@ -458,11 +499,11 @@
         //make firebase features references
         const auth = firebase.auth()
         const db = firebase.firestore()
+        const storage = firebase.storage()
     </script>
     <script src="../js/index.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/materialize_init.js"></script>
-    <script src="../js/hanoi.js"></script>
 </body>
 
 </html>

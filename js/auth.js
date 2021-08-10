@@ -115,7 +115,6 @@ loginForm.addEventListener('submit', (e) => {
 
     auth.signInWithEmailAndPassword(email.value, password.value)
         .then((userCredential) => {
-            //setupUI
 
             //close modal and reset form
             const modal = document.querySelector('#modal-login')
@@ -123,11 +122,12 @@ loginForm.addEventListener('submit', (e) => {
             loginForm.reset()
         })
         .catch((error) => {
-            var errorCode = error.code
-            var errorMessage = error.message
-            loginProblem.innerHTML = "Wrong password or email maybe?"
-            // ..
+            let errorCode = error.code
+            let errorMessage = error.message
+            loginProblem.innerHTML = "The password is invalid or the user does not have a password."
+            //..
             console.log(errorCode)
             console.log(errorMessage)
         });
 })
+console.log(districts)
