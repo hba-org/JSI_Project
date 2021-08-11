@@ -5,13 +5,20 @@ createForm.addEventListener('submit', (e) => {
     const owner = auth.currentUser.email
     const title = createForm['title']
     const price = createForm['price']
-    const location = createForm['location']
+    const location = createForm['specific-location']
+    const selectedFacilities = M.FormSelect.getInstance(createForm['facilities']).getSelectedValues()
+    const selectedDistrict = document.getElementById('district').M_FormSelect.input.value
+    const selectedBed = document.getElementById('bed').M_FormSelect.input.value;
     db.collection('rooms').add({
         owner: owner,
         title: title.value,
         price: price.value,
         location: location.value,
+        district: selectedDistrict,
+        facilities: selectedFacilities,
+        bed: selectedBed
     }).then(() => {
+        M.toast({html: 'Room Created!', classes:'rounded teal accent-3 white-text'})
         const modal = document.getElementById('modal-create')
         M.Modal.getInstance(modal).close()
         createForm.reset()
@@ -30,13 +37,13 @@ db.collection('rooms').onSnapshot((snapshot) => {
 auth.onAuthStateChanged((user) => {
     // console.log(user)
     if (user != null) {
-        console.log('user logged in')
+        M.toast({html: 'Signed In!', classes:'rounded teal accent-3 white-text'})
         console.log(user.email)
         setupUI(user)
     }
     else {
         setupUI()
-        console.log('user logged out')
+        M.toast({html: 'Signed Out!', classes:'rounded teal accent-3 white-text'})
     }
 })
 

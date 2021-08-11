@@ -78,3 +78,17 @@ let districts = {
     29: "Huyện Ứng Hòa",
     30: "Huyện Mỹ Đức"
 }
+let facilities = {
+    1: "Air-conditioning",
+    2: "Bathroom",
+    3: "Shower",
+    4: "Bathtub",
+    5: "Checkroom",
+    6: "Dry cleaner",
+    7: "Wi-fi",
+    8:"Electrical services",
+    9:"Microwave",
+    10:"Fridge",
+    11:"Stove",
+    12:"Coffee Maker"
+}
