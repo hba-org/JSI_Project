@@ -86,9 +86,9 @@ let facilities = {
     5: "Checkroom",
     6: "Dry cleaner",
     7: "Wi-fi",
-    8:"Electrical services",
-    9:"Microwave",
-    10:"Fridge",
-    11:"Stove",
-    12:"Coffee Maker"
+    8: "Electrical services",
+    9: "Microwave",
+    10: "Fridge",
+    11: "Stove",
+    12: "Coffee Maker"
 }

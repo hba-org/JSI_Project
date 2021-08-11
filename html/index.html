@@ -153,100 +153,125 @@
         <div class="modal-content">
             <h4>Hosting</h4><br />
             <form id="create-form" autocomplete="off">
-                <div class="input-field">
-                    <input type="text" id="title" required>
-                    <label for="title">Title</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" id="title" required>
+                        <label for="title">Title</label>
+                    </div>
                 </div>
-                <div class="input-field">
-                    <select id="district">
-                        <option value="" disabled selected>Example: Quận Hoàn Kiếm</option>
-                        <option value="1">Quận Ba Đình</option>
-                        <option value="2">Quận Hoàn Kiếm</option>
-                        <option value="3">Quận Tây Hồ</option>
-                        <option value="4">Quận Long Biên</option>
-                        <option value="5">Quận Cầu Giấy</option>
-                        <option value="6">Quận Đống Đa</option>
-                        <option value="7">Quận Hai Bà Trưng</option>
-                        <option value="8">Quận Hoàng Mai</option>
-                        <option value="9">Quận Thanh Xuân</option>
-                        <option value="10">Huyện Sóc Sơn</option>
-                        <option value="11">Huyện Đông Anh</option>
-                        <option value="12">Huyện Gia Lâm</option>
-                        <option value="13">Quận Nam Từ Liêm</option>
-                        <option value="14">Huyện Thanh Trì</option>
-                        <option value="15">Quận Bắc Từ Liêm</option>
-                        <option value="16">Huyện Mê Linh</option>
-                        <option value="17">Quận Hà Đông</option>
-                        <option value="18">Thị xã Sơn Tây</option>
-                        <option value="19">Huyện Ba Vì</option>
-                        <option value="20">Huyện Phúc Thọ</option>
-                        <option value="21">Huyện Đan Phượng</option>
-                        <option value="22">Huyện Hoài Đức</option>
-                        <option value="23">Huyện Quốc Oai</option>
-                        <option value="24">Huyện Thạch Thất</option>
-                        <option value="25">Huyện Chương Mỹ</option>
-                        <option value="26">Huyện Thanh Oai</option>
-                        <option value="27">Huyện Thường Tín</option>
-                        <option value="28">Huyện Phú Xuyên</option>
-                        <option value="29">Huyện Ứng Hòa</option>
-                        <option value="30">Huyện Mỹ Đức</option>
-                    </select>
-                    <label for="district">Location</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="district">
+                            <option value="" disabled selected>Example: Quận Hoàn Kiếm</option>
+                            <option value="1">Quận Ba Đình</option>
+                            <option value="2">Quận Hoàn Kiếm</option>
+                            <option value="3">Quận Tây Hồ</option>
+                            <option value="4">Quận Long Biên</option>
+                            <option value="5">Quận Cầu Giấy</option>
+                            <option value="6">Quận Đống Đa</option>
+                            <option value="7">Quận Hai Bà Trưng</option>
+                            <option value="8">Quận Hoàng Mai</option>
+                            <option value="9">Quận Thanh Xuân</option>
+                            <option value="10">Huyện Sóc Sơn</option>
+                            <option value="11">Huyện Đông Anh</option>
+                            <option value="12">Huyện Gia Lâm</option>
+                            <option value="13">Quận Nam Từ Liêm</option>
+                            <option value="14">Huyện Thanh Trì</option>
+                            <option value="15">Quận Bắc Từ Liêm</option>
+                            <option value="16">Huyện Mê Linh</option>
+                            <option value="17">Quận Hà Đông</option>
+                            <option value="18">Thị xã Sơn Tây</option>
+                            <option value="19">Huyện Ba Vì</option>
+                            <option value="20">Huyện Phúc Thọ</option>
+                            <option value="21">Huyện Đan Phượng</option>
+                            <option value="22">Huyện Hoài Đức</option>
+                            <option value="23">Huyện Quốc Oai</option>
+                            <option value="24">Huyện Thạch Thất</option>
+                            <option value="25">Huyện Chương Mỹ</option>
+                            <option value="26">Huyện Thanh Oai</option>
+                            <option value="27">Huyện Thường Tín</option>
+                            <option value="28">Huyện Phú Xuyên</option>
+                            <option value="29">Huyện Ứng Hòa</option>
+                            <option value="30">Huyện Mỹ Đức</option>
+                        </select>
+                        <label for="district">Location</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select multiple id="facilities">
+                            <optgroup label="Facilities">
+                                <option value="1" data-icon="../img/outline_ac_unit_black_48dp.png">Air-conditioning
+                                </option>
+                                <option value="2" data-icon="../img/outline_bathroom_black_48dp.png">Bathroom</option>
+                                <option value="3" data-icon="../img/outline_shower_black_48dp.png">Shower</option>
+                                <option value="4" data-icon="../img/outline_hot_tub_black_48dp.png">Bathtub</option>
+                                <option value="5" data-icon="../img/outline_checkroom_black_48dp.png">Checkroom</option>
+                                <option value="6" data-icon="../img/outline_dry_cleaning_black_48dp.png">Dry cleaning</option>
+                                <option value="7" data-icon="../img/outline_wifi_black_48dp.png">Wi-fi</option>
+                                <option value="8" data-icon="../img/outline_electrical_services_black_48dp.png">Electrical Services</option>
+                            </optgroup>
+                            <optgroup label="Kitchen Facilities">
+                                <option value="9" data-icon="../img/outline_microwave_black_48dp.png">Microwave</option>
+                                <option value="10" data-icon="../img/outline_kitchen_black_48dp.png">Fridge</option>
+                                <option value="11" data-icon="../img/outline_outdoor_grill_black_48dp.png">Stove</option>
+                                <option value="12" data-icon="../img/outline_coffee_maker_black_48dp.png">Coffee Maker</option>
+                            </optgroup>
+                        </select>
+                        <label for="facilities">Facilities</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <select id="bed">
+                            <option value="" disabled selected>Example: Single Bed</option>
+                            <option value="1" data-icon="../img/outline_bedroom_child_black_48dp.png">Single bed</option>
+                            <option value="2" data-icon="../img/outline_bedroom_parent_black_48dp.png">Double bed</option>
+                        </select>
+                        <label for="bed">Bed</label>
+                    </div>
                 </div>
 
-                <div class="input-field">
-                    <select multiple id="facilities">
-                        <optgroup label="Facilities">
-                            <option value="1" data-icon="../img/outline_ac_unit_black_48dp.png">Air-conditioning</option>
-                            <option value="2" data-icon="../img/outline_bathroom_black_48dp.png">Bathroom</option>
-                            <option value="3" data-icon="../img/outline_shower_black_48dp.png">Shower</option>  
-                            <option value="4" data-icon="../img/outline_hot_tub_black_48dp.png">Bathtub</option>
-                            <option value="5" data-icon="../img/outline_checkroom_black_48dp.png">Checkroom</option>
-                            <option value="6" data-icon="../img/outline_dry_cleaning_black_48dp.png">Dry cleaning</option>
-                            <option value="7" data-icon="../img/outline_wifi_black_48dp.png">Wi-fi</option>
-                            <option value="8" data-icon="../img/outline_electrical_services_black_48dp.png">Electrical Services</option>
-                        </optgroup>
-                        <optgroup label="Kitchen Facilities">
-                            <option value="9" data-icon="../img/outline_microwave_black_48dp.png">Microwave</option>
-                            <option value="10" data-icon="../img/outline_kitchen_black_48dp.png">Fridge</option>
-                            <option value="11" data-icon="../img/outline_outdoor_grill_black_48dp.png">Stove</option>
-                            <option value="12" data-icon="../img/outline_coffee_maker_black_48dp.png">Coffee Maker</option>
-                        </optgroup>
-                    </select>
-                    <label for="facilities">Facilities</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea type="text" id="specific-location" class="materialize-textarea" required></textarea>
+                        <label for="specific-location">Specific location</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea type="number" id="price" class="materialize-textarea" required></textarea>
+                        <label for="price">Room's price (VND/day)</label>
+                    </div>
                 </div>
 
-                <div class="input-field">
-                    <select id="bed">
-                        <option value="" disabled selected>Example: Single Bed</option>
-                        <option value="1" data-icon="../img/outline_bedroom_child_black_48dp.png">Single bed</option>
-                        <option value="2" data-icon="../img/outline_bedroom_parent_black_48dp.png">Double bed</option>
-                    </select>
-                    <label for="bed">Bed</label>
-                </div>
-
-                <div class="input-field">
-                    <textarea type="text" id="specific-location" class="materialize-textarea" required></textarea>
-                    <label for="specific-location">Specific location</label>
-                </div>
-
-                <div class="input-field">
-                    <textarea type="number" id="price" class="materialize-textarea" required></textarea>
-                    <label for="price">Room's price (VND/day)</label>
-                </div>
                 <!-- IMAGE INPUT PLEASE FIX THIS -->
-                <!-- <div class="file-field input-field">
-                    <div class="btn">
-                        <span>File</span>
-                        <input type="file" multiple id="image_upload" required accept="image/*">
+                <!-- Kinda developed -->
+                <div class="row">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" multiple id="image-upload" required accept="image/*">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Image of the room">
+                        </div>
                     </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Image of the room">
-                    </div>
-                </div> -->
-
+                </div>
                 <button class="btn teal accent-3 z-depth-0">Create</button>
             </form>
+            <div class="preloader-wrapper small active" id="loading-circle">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

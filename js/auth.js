@@ -1,29 +1,167 @@
 //Create new room
+function uploadImageAsPromise(image, docrefID) {
+    return new Promise(function (resolve, reject) {
+        var storageRef = storage.ref('roomImages/' + `${docrefID}/` + image.name)
+        var imageLink = ""
+        //Upload file
+        var uploadTask = storageRef.put(image)
+
+        //upload task visualization
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                console.log('Upload is ' + progress + '% done')
+                switch (snapshot.state) {
+                    case firebase.storage.TaskState.PAUSED: // or 'paused'
+                        console.log('Upload is paused')
+                        break;
+                    case firebase.storage.TaskState.RUNNING: // or 'running'
+                        console.log('Upload is running')
+                        break;
+                }
+            },
+            (error) => {
+                // Handle unsuccessful uploads
+                console.log(error.message)
+            },
+            () => {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    imageLink = downloadURL
+                    resolve(imageLink)
+                })
+            }
+        )
+    })
+}
+const loadingCircle = document.getElementById('loading-circle')
 const createForm = document.querySelector('#create-form')
+const roomDB = db.collection('rooms')
+loadingCircle.style.display = 'none'
 createForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const owner = auth.currentUser.email
-    const title = createForm['title']
-    const price = createForm['price']
-    const location = createForm['specific-location']
+    const title = createForm['title'].value
+    const price = createForm['price'].value
+    const location = createForm['specific-location'].value
     const selectedFacilities = M.FormSelect.getInstance(createForm['facilities']).getSelectedValues()
     const selectedDistrict = document.getElementById('district').M_FormSelect.input.value
-    const selectedBed = document.getElementById('bed').M_FormSelect.input.value;
+    const selectedBed = document.getElementById('bed').M_FormSelect.input.value
+    const selectedImages = document.getElementById('image-upload').files
+    let docRefID
     db.collection('rooms').add({
         owner: owner,
-        title: title.value,
-        price: price.value,
-        location: location.value,
+        title: title,
+        price: price,
+        location: location,
         district: selectedDistrict,
         facilities: selectedFacilities,
-        bed: selectedBed
+        bed: selectedBed,
+    }).then((docref) => {
+        console.log(docref.id)
+        docRefID = docref.id
+
+        Array.from(selectedImages).forEach((image) => {
+            uploadImageAsPromise(image, docRefID)
+        })
     }).then(() => {
-        M.toast({html: 'Room Created!', classes:'rounded teal accent-3 white-text'})
+        
+        M.toast({ html: 'Room Created!', classes: 'rounded teal accent-3 white-text' })
+        loadingCircle.style.display = 'none'
         const modal = document.getElementById('modal-create')
         M.Modal.getInstance(modal).close()
         createForm.reset()
     })
+
+
+
 })
+//Old codes, removing for rebuild:
+// const loadingCircle = document.getElementById('loading-circle')
+// const createForm = document.querySelector('#create-form')
+// loadingCircle.style.display = 'none'
+// createForm.addEventListener('submit', (e) => {
+//     e.preventDefault()
+//     const owner = auth.currentUser.email
+//     const title = createForm['title'].value
+//     const price = createForm['price'].value
+//     const location = createForm['specific-location'].value
+//     const selectedFacilities = M.FormSelect.getInstance(createForm['facilities']).getSelectedValues()
+//     const selectedDistrict = document.getElementById('district').M_FormSelect.input.value
+//     const selectedBed = document.getElementById('bed').M_FormSelect.input.value
+//     const selectedImages = document.getElementById('image-upload').files
+//     let docRefID = ''
+//     db.collection('rooms').add({
+//         owner: owner,
+//         title: title,
+//         price: price,
+//         location: location,
+//         district: selectedDistrict,
+//         facilities: selectedFacilities,
+//         bed: selectedBed
+//     }).then((docRef) => { // finally we can take the docref ID :D
+//         loadingCircle.style.display = 'block'
+//         docRefID = docRef.id
+//         console.log(docRefID)
+//         console.log(selectedImages)//debug
+//         let storageRef = storage.ref(`roomImage/${docRef.id}/`)
+//         const upload = new Promise(function (resolve, reject) {
+//             let imageLinks = []
+//             Array.from(selectedImages).forEach((image) => {
+//                 let imageRef = storageRef.child(`${image.name}`)
+//                 console.log(image.name)//debug
+//                 let uploadTask = imageRef.put(image)
+//                 uploadTask.on('state_changed',
+//                     (snapshot) => {
+//                         // Observe state change events such as progress, pause, and resume
+//                         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+//                         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//                         console.log('Upload is ' + progress + '% done');
+//                         switch (snapshot.state) {
+//                             case firebase.storage.TaskState.PAUSED: // or 'paused'
+//                                 console.log('Upload is paused');
+//                                 break;
+//                             case firebase.storage.TaskState.RUNNING: // or 'running'
+//                                 console.log('Upload is running');
+//                                 break;
+//                         }
+
+//                     },
+//                     (error) => {
+//                         // Handle unsuccessful uploads
+//                         console.log(error.message)
+//                     },
+//                     () => {
+//                         // Handle successful uploads on complete
+//                         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+//                         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+//                             // console.log('File available at', downloadURL);
+//                             imageLinks.push(downloadURL)
+//                         });
+//                     }
+//                 );
+//             })
+//             resolve(imageLinks)
+//         })
+//         upload.then((imageLinks) => {
+//             console.log(imageLinks)
+//             return db.collection('rooms').doc(docRefID).update({
+//                 images: imageLinks
+//             })
+//         }).then(() => {
+//             M.toast({ html: 'Room Created!', classes: 'rounded teal accent-3 white-text' })
+//             loadingCircle.style.display = 'none'
+//             const modal = document.getElementById('modal-create')
+//             M.Modal.getInstance(modal).close()
+//             createForm.reset()
+//         })
+//     })
+
+
+// })
 
 
 
@@ -37,13 +175,13 @@ db.collection('rooms').onSnapshot((snapshot) => {
 auth.onAuthStateChanged((user) => {
     // console.log(user)
     if (user != null) {
-        M.toast({html: 'Signed In!', classes:'rounded teal accent-3 white-text'})
+        M.toast({ html: 'Signed In!', classes: 'rounded teal accent-3 white-text' })
         console.log(user.email)
         setupUI(user)
     }
     else {
         setupUI()
-        M.toast({html: 'Signed Out!', classes:'rounded teal accent-3 white-text'})
+        M.toast({ html: 'Signed Out!', classes: 'rounded teal accent-3 white-text' })
     }
 })
 
@@ -137,4 +275,3 @@ loginForm.addEventListener('submit', (e) => {
             console.log(errorMessage)
         });
 })
-console.log(districts)
