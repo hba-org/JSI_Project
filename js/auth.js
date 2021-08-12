@@ -1,8 +1,7 @@
 //Create new room
-function uploadImageAsPromise(image, docrefID) {
+function uploadImageAsPromise(image, docrefID, roomDB) {
     return new Promise(function (resolve, reject) {
         var storageRef = storage.ref('roomImages/' + `${docrefID}/` + image.name)
-        var imageLink = ""
         //Upload file
         var uploadTask = storageRef.put(image)
 
@@ -30,13 +29,15 @@ function uploadImageAsPromise(image, docrefID) {
                 // Handle successful uploads on complete
                 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                 uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-                    imageLink = downloadURL
-                    resolve(imageLink)
+                    roomDB.doc(docrefID).update({
+                        images: firebase.firestore.FieldValue.arrayUnion(downloadURL)
+                    })
                 })
             }
         )
     })
 }
+
 const loadingCircle = document.getElementById('loading-circle')
 const createForm = document.querySelector('#create-form')
 const roomDB = db.collection('rooms')
@@ -51,7 +52,6 @@ createForm.addEventListener('submit', (e) => {
     const selectedDistrict = document.getElementById('district').M_FormSelect.input.value
     const selectedBed = document.getElementById('bed').M_FormSelect.input.value
     const selectedImages = document.getElementById('image-upload').files
-    let docRefID
     db.collection('rooms').add({
         owner: owner,
         title: title,
@@ -60,24 +60,21 @@ createForm.addEventListener('submit', (e) => {
         district: selectedDistrict,
         facilities: selectedFacilities,
         bed: selectedBed,
-    }).then((docref) => {
-        console.log(docref.id)
-        docRefID = docref.id
-
-        Array.from(selectedImages).forEach((image) => {
-            uploadImageAsPromise(image, docRefID)
-        })
-    }).then(() => {
-        
-        M.toast({ html: 'Room Created!', classes: 'rounded teal accent-3 white-text' })
-        loadingCircle.style.display = 'none'
-        const modal = document.getElementById('modal-create')
-        M.Modal.getInstance(modal).close()
-        createForm.reset()
     })
+        .then((docref) => {
+            console.log(docref.id)
 
-
-
+            Array.from(selectedImages).forEach((image) => {
+                uploadImageAsPromise(image, docref.id, roomDB)
+            })
+        })
+        .then(() => {
+            M.toast({ html: 'Room Created!', classes: 'rounded teal accent-3 white-text' })
+            loadingCircle.style.display = 'none'
+            const modal = document.getElementById('modal-create')
+            M.Modal.getInstance(modal).close()
+            createForm.reset()
+        })
 })
 //Old codes, removing for rebuild:
 // const loadingCircle = document.getElementById('loading-circle')
